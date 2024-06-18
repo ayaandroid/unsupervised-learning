@@ -66,19 +66,20 @@ def run_kmeans(X,k,num_init,num_iters):
     return min_J, best_mu, best_c
 
 #Example
-X_train = np.array([[10,1],[8,9],[1,1],[1,2],[7,6],[8,2],[9,3],[6,8],[3,2],
+if __name__ == '__main__':
+    X_train = np.array([[10,1],[8,9],[1,1],[1,2],[7,6],[8,2],[9,3],[6,8],[3,2],
                     [3,3],[7,8],[10,4],[11,2]])
-#n=2 features (so that we can plot it on xy plane)
+    #n=2 features (so that we can plot it on xy plane)
 
-#run k means with k=3 clusters
-k = 3
-J, mu, c = run_kmeans(X_train,k,10,10)
+    #run k means with k=3 clusters
+    k = 3
+    J, mu, c = run_kmeans(X_train,k,10,10)
 
-#plot
-colors = ['r','g','b']
-for j in range(k):
-    cluster_j = X_train[c==j]
-    plt.scatter(cluster_j[:,0],cluster_j[:,1],color = colors[j])
-plt.scatter(mu[:,0],mu[:,1],color = 'k',marker='x')
-plt.savefig('example.png')
-plt.close()
+    #plot
+    colors = ['r','g','b']
+    for j in range(k):
+        cluster_j = X_train[c==j]
+        plt.scatter(cluster_j[:,0],cluster_j[:,1],color = colors[j])
+    plt.scatter(mu[:,0],mu[:,1],color = 'k',marker='x')
+    plt.savefig('example.png')
+    plt.close()
